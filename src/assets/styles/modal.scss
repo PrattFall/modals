@@ -1,0 +1,102 @@
+@import 'lib/bourbon/bourbon';
+@import 'lib/neat/neat';
+@import 'lib/mixins';
+
+.modal, .modal * {
+	box-sizing: border-box;
+}
+
+.modal {
+	@include media(not-phone) { max-width: 800px; }
+	@include transform(translateY(-50%));
+	background: #fff;
+	border-radius: 3px;
+	box-shadow: 0 0 15px #222;
+	left: 0;
+	margin: 0 auto;
+	max-height: 90%;
+	overflow: auto;
+	position: fixed;
+	right: 0;
+	top: 50%;
+	width: 90%;
+	z-index: 1000;
+}
+
+.modal-hidden { display: none; }
+
+.modal-shown { display: block; }
+
+.modal-overlay {
+	background-color: #000;
+	display: block;
+	height: 100%;
+	left: 0;
+	opacity: .7;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+}
+
+.modal-overlay-hidden { display: none; }
+
+// Elements Inside
+
+.modal-header {
+	border-bottom: 1px solid #ddd;
+	overflow: hidden;
+	padding: 12px 22px;
+	position: relative;
+	width: 100%;
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 { margin: 0; }
+}
+
+.modal-footer {
+	border-top: 1px solid #ddd;
+	overflow: hidden;
+	padding: 16px;
+}
+
+.modal-content {
+	padding: 16px 24px;
+}
+
+.modal-small { max-width: 400px; }
+
+.modal-medium { max-width: 600px; }
+
+.modal-content-scrollable {
+	max-height: 450px;
+	overflow-y: auto;
+}
+
+.modal-content-overflowed {
+	box-shadow: 0 0 15px #ddd inset;
+}
+
+.modal-close {
+	background-image: url('img/close.svg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 25px 25px;
+	cursor: pointer;
+	height: 35px;
+	margin: 10px;
+	opacity: .3;
+	padding: 10px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 35px;
+
+	&:hover {
+		background-color: #ddd;
+		opacity: .5;
+	}
+}

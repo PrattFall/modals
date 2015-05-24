@@ -1,0 +1,155 @@
+// Custom
+
+@function dynamic-color($bg, $dark: #000, $light: #fff) {
+  @if (lightness($bg) > 50) {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}
+
+@function dynamic-lightness($bg, $color, $amount) {
+  @if (lightness($bg) > 50) {
+    @return lighten($color, $amount);
+  } @else {
+    @return darken($color, $amount);
+  }
+}
+
+@mixin hover($base, $hover, $active: $hover) {
+  background: $base;
+  &:hover { background: $hover; }
+  &:active { background: $active; }
+}
+
+@mixin appearance($val) {
+  -webkit-appearance: $val;
+  -moz-appearance: $val;
+  -ms-appearance: $val;
+  -o-appearance: $val;
+  appearance: $val;
+}
+
+%fix-transforms {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+%de-form {
+  @include appearance(none);
+  background: none;
+  border: 0;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+
+%no-bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Flex-box
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex($values) {
+  -moz-box-flex: $values;
+  -ms-flex: $values;
+  -webkit-box-flex: $values;
+  -webkit-flex: $values;
+  flex: $values;
+}
+
+@mixin flex-order($val) {
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
+  order: $val;
+}
+
+@mixin flex-wrap($val) {
+  -webkit-flex-wrap: $val;
+  -ms-flex-wrap: $val;
+  flex-wrap: $val;
+}
+
+@mixin flex-justify-content($val) {
+  -webkit-justify-content: $val;
+  justify-content: $val;
+}
+
+@mixin flex-pack($val) {
+  -ms-flex-pack: $val;
+  -webkit-flex-pack: $val;
+  flex-pack: $val;
+}
+
+@mixin flex-align($val) {
+  -webkit-box-align: $val;
+  -ms-flex-align: $val;
+  -webkit-align-items: $val;
+  align-items: $val;
+}
+
+// From: http://sachagreif.com/useful-sass-mixins/
+
+@function black($opacity) {
+  @return rgba(0, 0, 0, $opacity);
+}
+
+@function white($opacity) {
+  @return rgba(255, 255, 255, $opacity);
+}
+
+@mixin box-emboss($opacity, $opacity2) {
+  box-shadow: white($opacity) 0 1px 0, inset black($opacity2) 0 1px 0;
+}
+
+@mixin letterpress($opacity) {
+  text-shadow: white($opacity) 0 1px 0;
+}
+
+// From: http://web-design-weekly.com/2013/05/12/handy-sass-mixins/
+
+%clearfix {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after { clear: both; }
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after { clear: both; }
+}
+
+%center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// From Webster Journal Site
+
+@mixin responsive-img {
+  @include size(100% auto);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
