@@ -47,15 +47,12 @@ function toggle_class (el, clN) {
 }
 
 function has_class (el, clN) {
-	if (el.className.indexOf(clN) > -1) {
-		return true;
-	} else {
-		return false;
-	}
+	return el.className.indexOf(clN) > -1;
 }
 
 function is_overflowed(element){
-	return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+	return element.scrollHeight > element.clientHeight ||
+	       element.scrollWidth > element.clientWidth;
 }
 
 function toggle_modal_on () {
