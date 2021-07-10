@@ -1,29 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<script type="text/javascript" charset="utf-8" src='bp-modal.min.js'> </script>
-		<link rel="stylesheet" href="modal.min.css" type="text/css" media="all" />
-	</head>
-	<body>
-		<h1>Modals</h1>
-		<p data-modal="test">Click me!</p>
-		<p data-modal="no-header">This one has no header.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script
+      type="text/javascript"
+      charset="utf-8"
+      src="bp-modal.min.js"
+    ></script>
+    <link rel="stylesheet" href="modal.min.css" type="text/css" media="all" />
+  </head>
+  <body>
+    <h1>Modals</h1>
+    <p data-modal="test">Click me!</p>
+    <p data-modal="no-header">This one has no header.</p>
+    <p data-modal="scrollable">And one that is scrollable!</p>
 
-		<div id="test" class="modal modal-medium modal-closeable">
-			<div class="modal-header">
-				<h2>This is a Medium-Sized Modal</h2>
-			</div>
-			<div class="modal-content">
-				<p>This modal includes the class <code>modal-closable</code> which adds the fancy close button at the top right.</p>
-			</div>
-		</div>
+    <div class="modals">
+      <div id="test" class="modal modal-medium modal-closeable">
+        <div class="modal-header">
+          <h2>This is a Medium-Sized Modal</h2>
+        </div>
+        <div class="modal-content">
+          <p>
+            This modal includes the class <code>modal-closable</code> which adds
+            the fancy close button at the top right.
+          </p>
+        </div>
+      </div>
 
-		<div id="no-header" class="modal modal-medium modal-closeable">
-			<div class="modal-content">
-				<p>This one might be a bit more common. Modals with no header are supported as well. You just have to leave out the header in the code and bp-modal does the rest.</p>
-			</div>
-		</div>
-	</body>
+      <div id="no-header" class="modal modal-medium modal-closeable">
+        <div class="modal-content">
+          <p>
+            This one might be a bit more common. Modals with no header are
+            supported as well. You just have to leave out the header in the code
+            and bp-modal does the rest.
+          </p>
+        </div>
+      </div>
+
+      <div id="scrollable" class="modal modal-medium modal-scrollable">
+        <div class="modal-header">
+          <h2>A scrollable modal</h2>
+        </div>
+        <div class="modal-content">
+          <p>Lots of scrollable content!</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            non nunc libero. Sed a risus vestibulum, feugiat ante ac, euismod
+            ligula. Praesent suscipit vel augue ut congue. Integer scelerisque
+            luctus justo, id euismod ante egestas sed. Duis ut ligula tellus.
+            Curabitur libero odio, maximus ac erat eu, tempus bibendum tortor.
+            Ut mauris lacus, condimentum ut tincidunt interdum, bibendum nec
+            neque. Ut eu tortor mattis, posuere neque sed, porta erat. Cras non
+            eros elit. Praesent pulvinar diam quis aliquet gravida.
+          </p>
+          <img
+            src="http://placekitten.com/200/200"
+            style="float: left; margin-right: 10px"
+          />
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            non nunc libero. Sed a risus vestibulum, feugiat ante ac, euismod
+            ligula. Praesent suscipit vel augue ut congue. Integer scelerisque
+            luctus justo, id euismod ante egestas sed. Duis ut ligula tellus.
+            Curabitur libero odio, maximus ac erat eu, tempus bibendum tortor.
+            Ut mauris lacus, condimentum ut tincidunt interdum, bibendum nec
+            neque. Ut eu tortor mattis, posuere neque sed, porta erat. Cras non
+            eros elit. Praesent pulvinar diam quis aliquet gravida.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

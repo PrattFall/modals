@@ -1,21 +1,23 @@
 {
-	"name": "bp-modal",
-	"version": "0.8.0",
-	"description": "A pure JavaScript solution to modals.",
-	"author": "Brian Pratt <brianpratt@fastmail.fm>",
-	"private": true,
-	"dependencies": {
-		"gulp": "gulpjs/gulp#4.0",
-		"gulp-concat": "*",
-		"gulp-uglify": "*",
-		"gulp-sass": "*",
-		"gulp-autoprefixer": "*",
-		"gulp-minify-css": "*",
-		"gulp-connect": "*",
-		"del": "*",
-		"gulp-rename": "*"
-	},
-	"devDependencies": {
-		"gulp-cli": "git://github.com/gulpjs/gulp-cli.git#4.0"
-	}
+  "name": "bp-modal",
+  "version": "0.8.2",
+  "description": "A pure JavaScript solution to modals.",
+  "author": "Brian Pratt <bjp2693@gmail.com>",
+  "private": true,
+  "scripts": {
+    "build": "gulp",
+    "watch": "gulp watch"
+  },
+  "devDependencies": {
+    "del": "*",
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-clean-css": "*",
+    "gulp-concat": "*",
+    "gulp-connect": "*",
+    "gulp-rename": "*",
+    "gulp-sass": "*",
+    "gulp-uglify": "*",
+    "sass": "^1.35.2"
+  }
 }

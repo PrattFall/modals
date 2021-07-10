@@ -1,102 +1,96 @@
-@import 'lib/bourbon/bourbon';
-@import 'lib/neat/neat';
-@import 'lib/mixins';
+$modals-layer: 999;
 
-.modal, .modal * {
-	box-sizing: border-box;
+.modals,
+.modals *,
+.modals *:before,
+.modals *:after {
+  box-sizing: border-box;
 }
+
+.modals {
+  align-items: center;
+  background-color: rgba(0,0,0,.7);
+  bottom: 0;
+  display: none;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $modals-layer;
+}
+
+.modals-shown {
+  display: flex;
+}
+
 
 .modal {
-	@include media(not-phone) { max-width: 800px; }
-	@include transform(translateY(-50%));
-	background: #fff;
-	border-radius: 3px;
-	box-shadow: 0 0 15px #222;
-	left: 0;
-	margin: 0 auto;
-	max-height: 90%;
-	overflow: auto;
-	position: fixed;
-	right: 0;
-	top: 50%;
-	width: 90%;
-	z-index: 1000;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  display: none;
+  flex-direction: column;
+  max-height: 90%;
+  overflow: auto;
+  position: relative;
+  right: 0;
+  width: 90%;
 }
 
-.modal-hidden { display: none; }
-
-.modal-shown { display: block; }
-
-.modal-overlay {
-	background-color: #000;
-	display: block;
-	height: 100%;
-	left: 0;
-	opacity: .7;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 999;
-}
-
-.modal-overlay-hidden { display: none; }
-
-// Elements Inside
+.modal-shown { display: flex; }
 
 .modal-header {
-	border-bottom: 1px solid #ddd;
-	overflow: hidden;
-	padding: 12px 22px;
-	position: relative;
-	width: 100%;
+  border-bottom: 1px solid #ddd;
+  flex-grow: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  padding: 12px 22px;
+  position: relative;
+  width: 100%;
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5 { margin: 0; }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 { margin: 0; }
 }
 
 .modal-footer {
-	border-top: 1px solid #ddd;
-	overflow: hidden;
-	padding: 16px;
+  border-top: 1px solid #ddd;
+  overflow: hidden;
+  padding: 16px;
 }
 
 .modal-content {
-	padding: 16px 24px;
+  padding: 16px 24px;
 }
 
 .modal-small { max-width: 400px; }
 
 .modal-medium { max-width: 600px; }
 
-.modal-content-scrollable {
-	max-height: 450px;
-	overflow-y: auto;
-}
-
-.modal-content-overflowed {
-	box-shadow: 0 0 15px #ddd inset;
+.modal-scrollable .modal-content {
+  overflow-y: auto;
 }
 
 .modal-close {
-	background-image: url('img/close.svg');
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: 25px 25px;
-	cursor: pointer;
-	height: 35px;
-	margin: 10px;
-	opacity: .3;
-	padding: 10px;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 35px;
+  background-image: url('img/close.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  cursor: pointer;
+  height: 35px;
+  margin: 7px;
+  opacity: .3;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 35px;
 
-	&:hover {
-		background-color: #ddd;
-		opacity: .5;
-	}
+  &:hover {
+    background-color: #ddd;
+    opacity: .5;
+  }
 }

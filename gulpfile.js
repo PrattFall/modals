@@ -1,73 +1,72 @@
-var gulp = require('gulp');
+const gulp = require("gulp");
 
-// Javascript
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
+const del = require("del");
 
-//SASS
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var minifycss = require('gulp-minify-css');
+const cleancss = require("gulp-clean-css");
+const connect = require("gulp-connect");
+const rename = require("gulp-rename");
+const sass = require("gulp-sass")(require("sass"));
+const uglify = require("gulp-uglify");
 
-// Server
-var connect = require('gulp-connect');
-
-// Utility
-var del = require('del');
-var rename = require('gulp-rename');
-
-var paths = {
-	scripts: 'src/assets/js/**/*',
-	styles: 'src/assets/styles/**/*',
+const paths = {
+  scripts: "src/assets/js/**/*",
+  styles: "src/assets/styles/**/*",
+  html: "src/*.html",
+  images: "src/assets/img/**/*",
 };
 
-gulp.task('build', gulp.series(
-	clean,
-	gulp.parallel(scripts, styles, page, images)
-));
-gulp.task(watch);
+const clean = async () => {
+  del(["build"]);
+};
 
-gulp.task('default', gulp.series('build'));
+const page = async () => {
+  gulp.src(paths.html).pipe(gulp.dest("build"));
+};
 
-function clean(done) {
-	del(['build'], done);
-}
+const scripts = async () => {
+  gulp
+    .src(paths.scripts)
+    .pipe(uglify())
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(gulp.dest("build"));
+};
 
-function page() {
-	return gulp.src('src/*.html')
-		.pipe(gulp.dest('build'));
-}
+const styles = async () => {
+  gulp
+    .src(paths.styles)
+    .pipe(sass())
+    .pipe(gulp.dest("build"))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(cleancss())
+    .pipe(gulp.dest("build"));
+};
 
-function scripts() {
-	return gulp.src(paths.scripts)
-		.pipe(uglify())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest('build'));
-}
+const images = async () => {
+  gulp.src(paths.images).pipe(gulp.dest("build/img"));
+};
 
-function styles() {
-	return gulp.src('src/assets/styles/*.scss')
-		.pipe(sass())
-		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-		.pipe(gulp.dest('build'))
-		.pipe(rename({suffix: '.min'}))
-		.pipe(minifycss())
-		.pipe(gulp.dest('build'));
-}
+const watch = async () => {
+  gulp.watch(paths.scripts, scripts);
+  gulp.watch(paths.styles, styles);
+  gulp.watch(paths.html, page);
+  gulp.watch(paths.images, images);
 
-function images() {
-	return gulp.src('src/assets/img/**/*')
-		.pipe(gulp.dest('build/img'));
-}
+  connect.server({
+    root: "build",
+    livereload: true,
+  });
+};
 
-function watch() {
-	gulp.watch(paths.scripts, scripts);
-	gulp.watch(paths.styles, styles);
-	gulp.watch('src/*.html', page);
-	gulp.watch('src/assets/img/**/*', images);
+const build = async () => {
+  console.log("Startig build");
+  gulp.series(clean, gulp.parallel(scripts, styles, page, images));
+};
 
-	connect.server({
-		root: 'build',
-		livereload: true
-	});
-}
+exports.build = build;
+exports.images = images;
+exports.page = page;
+exports.scripts = scripts;
+exports.styles = styles;
+exports.watch = watch;
+
+exports.default = build;
