@@ -38,6 +38,7 @@ there, like so:
     </div>
   </div>
 </div>
+```
 
 Then to create a clickable object that triggers it you just need to add a data
 attribute called `data-modal` that points to the id of the modal you created to
