@@ -2,9 +2,12 @@
 
 A simple modal solution using pure JavaScript and CSS.
 
-At the moment, the way you would use it would be to include the `bp-modal.min.js` file (inside "build") in the head of your html file and include the appropriate `modal.css` file.
+At the moment, the way you would use it would be to include the
+`bp-modal.min.js` file (inside "build") in the head of your html file and
+include the appropriate `modal.css` file.
 
-The code for modals is fairly simple. You can create a very basic modal using the following code structure:
+The code for modals is fairly simple. You can create a very basic modal using
+the following code structure:
 
 ```
 <div id="put-anything-here" class="modal">
@@ -14,15 +17,42 @@ The code for modals is fairly simple. You can create a very basic modal using th
 </div>
 ```
 
-Then to create a clickable object that triggers it you just need to add a data attribute called `data-modal` that points to the id of the modal you created to whatever html tag you want. An example being:
+inside a div with the class `.modals`. You can put as many modals as you want in
+there, like so:
+
+```
+<div class="modals">
+  <div id="modal-1" class="modal">
+    <div class="modal-content">
+      <p>Content of the first modal</p>
+    </div>
+  </div>
+  <div id="modal-2" class="modal">
+    <div class="modal-content">
+      <p>Content of the second modal</p>
+    </div>
+  </div>
+  <div id="modal-3" class="modal">
+    <div class="modal-content">
+      <p>Content of yet another modal</p>
+    </div>
+  </div>
+</div>
+
+Then to create a clickable object that triggers it you just need to add a data
+attribute called `data-modal` that points to the id of the modal you created to
+whatever html tag you want. An example being:
 
 ```
 <p data-modal="above-modals-id">Click me!</p>
 ```
 
-I also included several (completely rewriteable) default styles for modals. You can change the max width of the modal by giving it the class `modal-small` or `modal-medium`.
+I also included several (completely rewriteable) default styles for modals. You
+can change the max width of the modal by giving it the class `modal-small` or
+`modal-medium`.
 
-You can give the modal a header section by adding a div with the class `modal-header` to the top of your modal like so:
+You can give the modal a header section by adding a div with the class
+`modal-header` to the top of your modal like so:
 
 ```
 <div id="some-kind-of-id" class="modal">
@@ -35,7 +65,8 @@ You can give the modal a header section by adding a div with the class `modal-he
 </div>
 ```
 
-Finally, you can add a "close" button by adding the `model-closeable` class to the modal itself.
+Finally, you can add a "close" button by adding the `model-closeable` class to
+the modal itself.
 
 ```
 <div id="whatever" class="modal modal-closeable">
@@ -45,4 +76,5 @@ Finally, you can add a "close" button by adding the `model-closeable` class to t
 
 There are examples to play with in `build/index.html`.
 
-Remember to run `npm install` and `gulp watch` before changing anything so that it compiles changes!
+Remember to run `npm install` and `gulp watch` before changing anything so that
+it compiles changes!
